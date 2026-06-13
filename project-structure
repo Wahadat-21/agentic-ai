@@ -1,0 +1,224 @@
+agentic-ai/
+├── .env.example
+├── .gitignore
+├── README.md
+├── docker-compose.yml
+├── Makefile
+│
+├── backend/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   ├── pyproject.toml
+│   ├── .env.example
+│   │
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── config.py
+│   │   │
+│   │   ├── agents/
+│   │   │   ├── __init__.py
+│   │   │   ├── base_agent.py
+│   │   │   ├── agent_manager.py
+│   │   │   ├── planner_agent.py
+│   │   │   ├── research_agent.py
+│   │   │   ├── memory_agent.py
+│   │   │   ├── executor_agent.py
+│   │   │   ├── reflection_agent.py
+│   │   │   │
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   ├── llm_service.py
+│   │   │   ├── tool_registry.py
+│   │   │   ├── task_decomposer.py
+│   │   │   ├── goal_planner.py
+│   │   │   ├── self_correction.py
+│   │   │   │
+│   │   ├── memory/
+│   │   │   ├── __init__.py
+│   │   │   ├── short_term_memory.py
+│   │   │   ├── long_term_memory.py
+│   │   │   ├── memory_manager.py
+│   │   │   ├── vector_store.py
+│   │   │   │
+│   │   ├── rag/
+│   │   │   ├── __init__.py
+│   │   │   ├── rag_pipeline.py
+│   │   │   ├── document_processor.py
+│   │   │   ├── pdf_processor.py
+│   │   │   ├── knowledge_base.py
+│   │   │   ├── embeddings.py
+│   │   │   │
+│   │   ├── tools/
+│   │   │   ├── __init__.py
+│   │   │   ├── web_search.py
+│   │   │   ├── calculator.py
+│   │   │   ├── file_operations.py
+│   │   │   ├── api_caller.py
+│   │   │   ├── database_query.py
+│   │   │   │
+│   │   ├── api/
+│   │   │   ├── __init__.py
+│   │   │   ├── routes/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── chat.py
+│   │   │   │   ├── agents.py
+│   │   │   │   ├── memory.py
+│   │   │   │   ├── knowledge.py
+│   │   │   │   ├── analytics.py
+│   │   │   │   ├── auth.py
+│   │   │   │   │
+│   │   │   ├── dependencies.py
+│   │   │   ├── websocket_manager.py
+│   │   │   │
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── conversation.py
+│   │   │   ├── memory.py
+│   │   │   ├── task.py
+│   │   │   ├── knowledge.py
+│   │   │   ├── user.py
+│   │   │   │
+│   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── auth_service.py
+│   │   │   ├── analytics_service.py
+│   │   │   ├── conversation_service.py
+│   │   │   │
+│   │   ├── database/
+│   │   │   ├── __init__.py
+│   │   │   ├── session.py
+│   │   │   ├── base.py
+│   │   │   │
+│   │   └── utils/
+│   │       ├── __init__.py
+│   │       ├── logger.py
+│   │       ├── exceptions.py
+│   │       ├── validators.py
+│   │       └── helpers.py
+│   │
+│   └── tests/
+│       ├── __init__.py
+│       ├── conftest.py
+│       ├── test_agents/
+│       ├── test_api/
+│       ├── test_memory/
+│       ├── test_rag/
+│       └── test_tools/
+│
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── tailwind.config.js
+│   ├── vite.config.ts
+│   ├── index.html
+│   │
+│   ├── src/
+│   │   ├── main.tsx
+│   │   ├── App.tsx
+│   │   ├── index.css
+│   │   │
+│   │   ├── components/
+│   │   │   ├── Chat/
+│   │   │   │   ├── ChatInterface.tsx
+│   │   │   │   ├── MessageBubble.tsx
+│   │   │   │   ├── MessageInput.tsx
+│   │   │   │   ├── TypingIndicator.tsx
+│   │   │   │   │
+│   │   │   ├── Dashboard/
+│   │   │   │   ├── AgentMonitor.tsx
+│   │   │   │   ├── MetricsCard.tsx
+│   │   │   │   ├── ActivityLog.tsx
+│   │   │   │   │
+│   │   │   ├── Memory/
+│   │   │   │   ├── MemoryViewer.tsx
+│   │   │   │   ├── ShortTermMemory.tsx
+│   │   │   │   ├── LongTermMemory.tsx
+│   │   │   │   │
+│   │   │   ├── Knowledge/
+│   │   │   │   ├── KnowledgeBaseViewer.tsx
+│   │   │   │   ├── DocumentUploader.tsx
+│   │   │   │   ├── SearchResults.tsx
+│   │   │   │   │
+│   │   │   ├── Layout/
+│   │   │   │   ├── Sidebar.tsx
+│   │   │   │   ├── Header.tsx
+│   │   │   │   └── Layout.tsx
+│   │   │   │
+│   │   ├── pages/
+│   │   │   ├── ChatPage.tsx
+│   │   │   ├── DashboardPage.tsx
+│   │   │   ├── MemoryPage.tsx
+│   │   │   ├── KnowledgePage.tsx
+│   │   │   ├── SettingsPage.tsx
+│   │   │   ├── AnalyticsPage.tsx
+│   │   │   ├── LoginPage.tsx
+│   │   │   │
+│   │   ├── services/
+│   │   │   ├── api.ts
+│   │   │   ├── websocket.ts
+│   │   │   ├── auth.ts
+│   │   │   │
+│   │   ├── store/
+│   │   │   ├── store.ts
+│   │   │   ├── slices/
+│   │   │   │   ├── chatSlice.ts
+│   │   │   │   ├── agentSlice.ts
+│   │   │   │   ├── memorySlice.ts
+│   │   │   │   ├── knowledgeSlice.ts
+│   │   │   │   ├── authSlice.ts
+│   │   │   │   │
+│   │   ├── hooks/
+│   │   │   ├── useWebSocket.ts
+│   │   │   ├── useAuth.ts
+│   │   │   └── useAgentStream.ts
+│   │   │
+│   │   └── types/
+│   │       ├── index.ts
+│   │       └── agent.ts
+│   │
+│   └── public/
+│       └── index.html
+│
+├── database/
+│   ├── init.sql
+│   ├── migrations/
+│   │   ├── 001_init.sql
+│   │   ├── 002_add_memory_tables.sql
+│   │   └── 003_add_knowledge_tables.sql
+│   └── backup.sh
+│
+├── vector_store/
+│   └── chroma/
+│       └── .gitkeep
+│
+├── docs/
+│   ├── API.md
+│   ├── ARCHITECTURE.md
+│   ├── DEPLOYMENT.md
+│   └── USER_GUIDE.md
+│
+├── docker/
+│   ├── nginx/
+│   │   ├── nginx.conf
+│   │   └── default.conf
+│   └── postgres/
+│       └── postgresql.conf
+│
+├── deployment/
+│   ├── kubernetes/
+│   │   ├── deployment.yaml
+│   │   ├── service.yaml
+│   │   ├── ingress.yaml
+│   │   └── configmap.yaml
+│   └── terraform/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+│
+└── tests/
+    ├── e2e/
+    ├── integration/
+    └── performance/
